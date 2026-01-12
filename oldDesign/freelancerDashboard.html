@@ -1,0 +1,411 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bids - GigFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-8">
+                    <a href="#" class="text-xl font-semibold text-gray-900 tracking-tight">GigFlow</a>
+                    <div class="hidden md:flex items-center gap-6">
+                        <a href="#" class="text-base text-gray-600 hover:text-gray-900 transition-colors">Find Work</a>
+                        <a href="#" class="text-base text-gray-600 hover:text-gray-900 transition-colors">Find
+                            Talent</a>
+                        <a href="#" class="text-base text-gray-600 hover:text-gray-900 transition-colors">How It
+                            Works</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden sm:flex items-center gap-3">
+                        <button
+                            class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                            <i data-lucide="bell" class="w-5 h-5" stroke-width="1.5"></i>
+                        </button>
+                        <button
+                            class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                            <i data-lucide="message-square" class="w-5 h-5" stroke-width="1.5"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-gray-900 rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium text-white">JD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-semibold text-gray-900 tracking-tight">My Bids</h1>
+                    <p class="text-base text-gray-500 mt-1">Track and manage all your submitted proposals</p>
+                </div>
+                <a href="#"
+                    class="inline-flex items-center justify-center gap-2 bg-gray-900 text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-800 transition-colors">
+                    <i data-lucide="search" class="w-4 h-4" stroke-width="1.5"></i>
+                    Find New Jobs
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <i data-lucide="file-text" class="w-5 h-5 text-gray-600" stroke-width="1.5"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-semibold text-gray-900 tracking-tight">12</p>
+                        <p class="text-sm text-gray-500">Total Bids</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center">
+                        <i data-lucide="clock" class="w-5 h-5 text-amber-600" stroke-width="1.5"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-semibold text-gray-900 tracking-tight">5</p>
+                        <p class="text-sm text-gray-500">Pending</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600" stroke-width="1.5"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-semibold text-gray-900 tracking-tight">4</p>
+                        <p class="text-sm text-gray-500">Hired</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
+                        <i data-lucide="x-circle" class="w-5 h-5 text-red-500" stroke-width="1.5"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-semibold text-gray-900 tracking-tight">3</p>
+                        <p class="text-sm text-gray-500">Rejected</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-2 mb-6 overflow-x-auto pb-2">
+            <button class="px-4 py-2 text-sm font-medium bg-gray-900 text-white rounded-lg whitespace-nowrap">All
+                Bids</button>
+            <button
+                class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors whitespace-nowrap">Pending</button>
+            <button
+                class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors whitespace-nowrap">Hired</button>
+            <button
+                class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors whitespace-nowrap">Rejected</button>
+        </div>
+
+        <!-- Bids List -->
+        <div class="space-y-4">
+            <!-- Bid Card - Hired -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 transition-colors">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-medium text-gray-900 tracking-tight">Full-Stack Developer for SaaS
+                                Platform</h3>
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">
+                                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                Hired
+                            </span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-4 line-clamp-2">I have 5+ years of experience building SaaS
+                            applications with React, Node.js, and AWS. I've successfully delivered similar projects for
+                            clients in the fintech and healthcare industries. I can start immediately and deliver within
+                            your timeline.</p>
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="calendar" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Submitted 3 days ago</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="briefcase" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Web Development</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end gap-4 lg:gap-2">
+                        <div class="text-right">
+                            <p class="text-2xl font-semibold text-gray-900 tracking-tight">$4,200</p>
+                            <p class="text-sm text-gray-500">Your Bid</p>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                            View Details
+                            <i data-lucide="arrow-right" class="w-4 h-4" stroke-width="1.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bid Card - Pending -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 transition-colors">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-medium text-gray-900 tracking-tight">E-commerce Website Redesign
+                            </h3>
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-medium rounded-full">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                                Pending
+                            </span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-4 line-clamp-2">I specialize in e-commerce UI/UX design
+                            with a focus on conversion optimization. My portfolio includes successful redesigns that
+                            increased client sales by 40%. I'll create a modern, user-friendly design that drives
+                            results.</p>
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="calendar" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Submitted 1 day ago</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="briefcase" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end gap-4 lg:gap-2">
+                        <div class="text-right">
+                            <p class="text-2xl font-semibold text-gray-900 tracking-tight">$2,800</p>
+                            <p class="text-sm text-gray-500">Your Bid</p>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                            View Details
+                            <i data-lucide="arrow-right" class="w-4 h-4" stroke-width="1.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bid Card - Pending -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 transition-colors">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-medium text-gray-900 tracking-tight">Mobile App Development - iOS
+                                &amp; Android</h3>
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-medium rounded-full">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                                Pending
+                            </span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-4 line-clamp-2">With expertise in React Native and Flutter,
+                            I can build a cross-platform app that feels native on both iOS and Android. I've shipped 15+
+                            apps to the App Store and Play Store with excellent user ratings.</p>
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="calendar" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Submitted 2 days ago</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="briefcase" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Mobile Development</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end gap-4 lg:gap-2">
+                        <div class="text-right">
+                            <p class="text-2xl font-semibold text-gray-900 tracking-tight">$8,500</p>
+                            <p class="text-sm text-gray-500">Your Bid</p>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                            View Details
+                            <i data-lucide="arrow-right" class="w-4 h-4" stroke-width="1.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bid Card - Rejected -->
+            <div
+                class="bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 transition-colors opacity-75">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-medium text-gray-900 tracking-tight">Brand Identity Design for
+                                Startup</h3>
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-red-50 text-red-700 text-xs font-medium rounded-full">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                Rejected
+                            </span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-4 line-clamp-2">I would love to help create a memorable
+                            brand identity for your startup. My design process includes comprehensive research, multiple
+                            concept directions, and unlimited revisions until you're satisfied.</p>
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="calendar" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Submitted 5 days ago</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="briefcase" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end gap-4 lg:gap-2">
+                        <div class="text-right">
+                            <p class="text-2xl font-semibold text-gray-900 tracking-tight">$1,500</p>
+                            <p class="text-sm text-gray-500">Your Bid</p>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                            View Details
+                            <i data-lucide="arrow-right" class="w-4 h-4" stroke-width="1.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bid Card - Hired -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 transition-colors">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-medium text-gray-900 tracking-tight">SEO Content Writing - 20
+                                Articles</h3>
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">
+                                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                Hired
+                            </span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-4 line-clamp-2">As a certified SEO specialist and content
+                            writer, I'll create engaging, keyword-optimized articles that rank. I use tools like Ahrefs
+                            and Surfer SEO to ensure maximum visibility for your content.</p>
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="calendar" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Submitted 1 week ago</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="briefcase" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Writing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end gap-4 lg:gap-2">
+                        <div class="text-right">
+                            <p class="text-2xl font-semibold text-gray-900 tracking-tight">$1,200</p>
+                            <p class="text-sm text-gray-500">Your Bid</p>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                            View Details
+                            <i data-lucide="arrow-right" class="w-4 h-4" stroke-width="1.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bid Card - Pending -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-300 transition-colors">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-medium text-gray-900 tracking-tight">Data Analytics Dashboard
+                                Development</h3>
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-medium rounded-full">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                                Pending
+                            </span>
+                        </div>
+                        <p class="text-base text-gray-600 mb-4 line-clamp-2">I'll build an interactive analytics
+                            dashboard using D3.js and React. My dashboards are known for their beautiful visualizations
+                            and real-time data processing capabilities that help businesses make data-driven decisions.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="calendar" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Submitted 4 hours ago</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="briefcase" class="w-4 h-4" stroke-width="1.5"></i>
+                                <span>Web Development</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end gap-4 lg:gap-2">
+                        <div class="text-right">
+                            <p class="text-2xl font-semibold text-gray-900 tracking-tight">$3,600</p>
+                            <p class="text-sm text-gray-500">Your Bid</p>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                            View Details
+                            <i data-lucide="arrow-right" class="w-4 h-4" stroke-width="1.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-between mt-8 pt-6 border-t border-gray-200">
+            <p class="text-sm text-gray-500">Showing 6 of 12 bids</p>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50"
+                    disabled="">
+                    <i data-lucide="chevron-left" class="w-5 h-5" stroke-width="1.5"></i>
+                </button>
+                <button
+                    class="w-9 h-9 flex items-center justify-center text-sm font-medium bg-gray-900 text-white rounded-lg">1</button>
+                <button
+                    class="w-9 h-9 flex items-center justify-center text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">2</button>
+                <button class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+                    <i data-lucide="chevron-right" class="w-5 h-5" stroke-width="1.5"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+
+</html>

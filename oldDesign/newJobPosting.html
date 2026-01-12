@@ -1,0 +1,272 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post New Job - GigFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="hidden lg:flex lg:flex-col w-64 bg-white border-r border-gray-200 fixed h-full">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-200">
+                <a href="#" class="text-xl font-semibold text-gray-900 tracking-tight">GigFlow</a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 p-4 space-y-1">
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition-colors">
+                    <i data-lucide="briefcase" class="w-5 h-5" style="stroke-width: 1.5;"></i>
+                    My Jobs
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-900 bg-gray-100 rounded-lg">
+                    <i data-lucide="plus-circle" class="w-5 h-5 text-gray-700" style="stroke-width: 1.5;"></i>
+                    Post New Job
+                </a>
+            </nav>
+
+            <!-- Logout -->
+            <div class="p-4 border-t border-gray-200">
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition-colors">
+                    <i data-lucide="log-out" class="w-5 h-5" style="stroke-width: 1.5;"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Mobile Header -->
+        <div class="lg:hidden fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
+            <div class="flex items-center justify-between p-4">
+                <a href="#" class="text-xl font-semibold text-gray-900 tracking-tight">GigFlow</a>
+                <button id="mobileMenuBtn" class="p-2 text-gray-600 hover:text-gray-900">
+                    <i data-lucide="menu" class="w-6 h-6" style="stroke-width: 1.5;"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Sidebar Overlay -->
+        <div id="mobileSidebar" class="lg:hidden fixed inset-0 z-50 hidden">
+            <div class="absolute inset-0 bg-gray-900/50" id="sidebarOverlay"></div>
+            <aside class="absolute left-0 top-0 bottom-0 w-64 bg-white">
+                <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+                    <a href="#" class="text-xl font-semibold text-gray-900 tracking-tight">GigFlow</a>
+                    <button id="closeSidebar" class="p-1 text-gray-600 hover:text-gray-900">
+                        <i data-lucide="x" class="w-5 h-5" style="stroke-width: 1.5;"></i>
+                    </button>
+                </div>
+                <nav class="flex-1 p-4 space-y-1">
+                    <a href="#"
+                        class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition-colors">
+                        <i data-lucide="briefcase" class="w-5 h-5" style="stroke-width: 1.5;"></i>
+                        My Jobs
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-900 bg-gray-100 rounded-lg">
+                        <i data-lucide="plus-circle" class="w-5 h-5 text-gray-700" style="stroke-width: 1.5;"></i>
+                        Post New Job
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition-colors">
+                        <i data-lucide="log-out" class="w-5 h-5" style="stroke-width: 1.5;"></i>
+                        Logout
+                    </a>
+                </nav>
+            </aside>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-64 pt-16 lg:pt-0">
+            <div class="max-w-2xl mx-auto p-6 lg:p-8">
+                <!-- Header -->
+                <div class="mb-8">
+                    <a href="#"
+                        class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition-colors mb-4">
+                        <i data-lucide="arrow-left" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+                        Back to My Jobs
+                    </a>
+                    <h1 class="text-2xl font-semibold text-gray-900 tracking-tight">Post New Job</h1>
+                    <p class="text-base text-gray-600 mt-1">Fill in the details below to post your job and start
+                        receiving bids from freelancers.</p>
+                </div>
+
+                <!-- Form Card -->
+                <div class="bg-white rounded-xl border border-gray-200 p-6 lg:p-8">
+                    <form id="jobForm" class="space-y-6">
+                        <!-- Job Title -->
+                        <div>
+                            <label for="jobTitle" class="block text-sm font-medium text-gray-900 mb-2">
+                                Job Title
+                            </label>
+                            <input type="text" id="jobTitle" name="jobTitle"
+                                placeholder="e.g., Full-Stack Developer for SaaS Platform"
+                                class="w-full px-4 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all"
+                                required="">
+                            <p class="mt-2 text-xs text-gray-500">Write a clear, descriptive title that attracts the
+                                right freelancers.</p>
+                        </div>
+
+                        <!-- Job Description -->
+                        <div>
+                            <label for="jobDescription" class="block text-sm font-medium text-gray-900 mb-2">
+                                Job Description
+                            </label>
+                            <textarea id="jobDescription" name="jobDescription" rows="6"
+                                placeholder="Describe your project in detail. Include the scope of work, required skills, deliverables, and any specific requirements..."
+                                class="w-full px-4 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all resize-none"
+                                required=""></textarea>
+                            <p class="mt-2 text-xs text-gray-500">Be specific about your requirements to receive more
+                                accurate bids.</p>
+                        </div>
+
+                        <!-- Budget -->
+                        <div>
+                            <label for="budget" class="block text-sm font-medium text-gray-900 mb-2">
+                                Budget
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 text-sm">$</span>
+                                </div>
+                                <input type="number" id="budget" name="budget" placeholder="0.00" min="1" step="0.01"
+                                    class="w-full pl-8 pr-16 py-3 text-sm text-gray-900 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all"
+                                    required="">
+                                <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 text-sm">USD</span>
+                                </div>
+                            </div>
+                            <p class="mt-2 text-xs text-gray-500">Set a realistic budget for your project to attract
+                                quality freelancers.</p>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="border-t border-gray-100 pt-6">
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <button type="submit"
+                                    class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors">
+                                    <i data-lucide="send" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+                                    Submit Job
+                                </button>
+                                <button type="button"
+                                    class="px-6 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-colors">
+                                    Save as Draft
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Tips Card -->
+                <div class="mt-6 bg-blue-50 rounded-xl border border-blue-100 p-5">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center">
+                                <i data-lucide="lightbulb" class="w-5 h-5 text-blue-600" style="stroke-width: 1.5;"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-medium text-blue-900 mb-1">Tips for a great job post</h3>
+                            <ul class="text-sm text-blue-800 space-y-1">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 flex-shrink-0"
+                                        style="stroke-width: 1.5;"></i>
+                                    <span>Be specific about skills and experience required</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 flex-shrink-0"
+                                        style="stroke-width: 1.5;"></i>
+                                    <span>Include clear deliverables and timeline expectations</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 mt-0.5 flex-shrink-0"
+                                        style="stroke-width: 1.5;"></i>
+                                    <span>Set a competitive budget to attract quality bids</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-gray-900/50"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 text-center">
+                <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="check-circle" class="w-7 h-7 text-green-600" style="stroke-width: 1.5;"></i>
+                </div>
+                <h2 class="text-xl font-semibold text-gray-900 tracking-tight mb-2">Job Posted Successfully!</h2>
+                <p class="text-sm text-gray-600 mb-6">Your job has been published. Freelancers can now start submitting
+                    their bids.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button onclick="closeModal()"
+                        class="flex-1 px-5 py-2.5 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors">
+                        View My Jobs
+                    </button>
+                    <button onclick="closeModal()"
+                        class="flex-1 px-5 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        Post Another Job
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileSidebar = document.getElementById('mobileSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileSidebar.classList.remove('hidden');
+        });
+
+        closeSidebar.addEventListener('click', () => {
+            mobileSidebar.classList.add('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            mobileSidebar.classList.add('hidden');
+        });
+
+        // Form submission
+        const jobForm = document.getElementById('jobForm');
+        const successModal = document.getElementById('successModal');
+
+        jobForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            successModal.classList.remove('hidden');
+            lucide.createIcons();
+        });
+
+        function closeModal() {
+            successModal.classList.add('hidden');
+            jobForm.reset();
+        }
+    </script>
+
+</body>
+
+</html>

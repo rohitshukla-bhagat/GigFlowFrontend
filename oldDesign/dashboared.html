@@ -1,0 +1,318 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GigFlow - Freelance Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 font-sans antialiased" style="font-family: 'Inter', sans-serif;">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <span class="text-xl font-semibold tracking-tight text-slate-900">GigFlow</span>
+                </div>
+                
+                <!-- Nav Links - Desktop -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Find Work</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Find Talent</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">How It Works</a>
+                </div>
+                
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-3">
+                    <button class="text-sm font-medium text-slate-600 hover:text-slate-900 px-4 py-2 transition-colors">Log in</button>
+                    <button class="text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 px-4 py-2 rounded-lg transition-colors">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-white to-slate-50 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight text-slate-900 mb-4">Find your next opportunity</h1>
+            <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">Connect with top clients and discover freelance projects that match your skills. Start building your career today.</p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto">
+                <div class="relative flex items-center bg-white rounded-xl shadow-lg shadow-slate-200/50 border border-slate-200 p-2">
+                    <span class="iconify text-slate-400 ml-3" data-icon="lucide:search" data-width="20" data-height="20" style="stroke-width: 1.5;"></span>
+                    <input type="text" id="searchInput" placeholder="Search jobs by title, skill, or keyword..." class="flex-1 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none bg-transparent">
+                    <button onclick="filterJobs()" class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-6 py-3 rounded-lg transition-colors">
+                        Search
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Popular searches -->
+            <div class="mt-6 flex flex-wrap justify-center gap-2">
+                <span class="text-xs text-slate-500">Popular:</span>
+                <button onclick="searchTag('Web Development')" class="text-xs text-slate-600 hover:text-slate-900 bg-white px-3 py-1 rounded-full border border-slate-200 hover:border-slate-300 transition-colors">Web Development</button>
+                <button onclick="searchTag('Design')" class="text-xs text-slate-600 hover:text-slate-900 bg-white px-3 py-1 rounded-full border border-slate-200 hover:border-slate-300 transition-colors">Design</button>
+                <button onclick="searchTag('Writing')" class="text-xs text-slate-600 hover:text-slate-900 bg-white px-3 py-1 rounded-full border border-slate-200 hover:border-slate-300 transition-colors">Writing</button>
+                <button onclick="searchTag('Marketing')" class="text-xs text-slate-600 hover:text-slate-900 bg-white px-3 py-1 rounded-full border border-slate-200 hover:border-slate-300 transition-colors">Marketing</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="lg:w-64 flex-shrink-0">
+                <div class="bg-white rounded-xl border border-slate-200 p-5 sticky top-24">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-4">Filters</h3>
+                    
+                    <!-- Category Filter -->
+                    <div class="mb-6">
+                        <label class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2 block">Category</label>
+                        <select id="categoryFilter" onchange="filterJobs()" class="w-full text-sm text-slate-700 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent">
+                            <option value="">All Categories</option>
+                            <option value="development">Development</option>
+                            <option value="design">Design</option>
+                            <option value="writing">Writing</option>
+                            <option value="marketing">Marketing</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Budget Filter -->
+                    <div class="mb-6">
+                        <label class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2 block">Budget Range</label>
+                        <select id="budgetFilter" onchange="filterJobs()" class="w-full text-sm text-slate-700 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent">
+                            <option value="">Any Budget</option>
+                            <option value="0-500">$0 - $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000-5000">$1,000 - $5,000</option>
+                            <option value="5000+">$5,000+</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Clear Filters -->
+                    <button onclick="clearFilters()" class="w-full text-sm text-slate-600 hover:text-slate-900 py-2 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                        Clear Filters
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Job Listings -->
+            <div class="flex-1">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-semibold text-slate-900">Available Jobs</h2>
+                    <span id="jobCount" class="text-sm text-slate-500">12 jobs found</span>
+                </div>
+                
+                <!-- Job Cards Grid -->
+                <div id="jobGrid" class="grid gap-4">
+                    <!-- Job cards will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <span class="text-lg font-semibold tracking-tight text-slate-900">GigFlow</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Terms</a>
+                    <a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Privacy</a>
+                    <a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Support</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-100 text-center">
+                <p class="text-xs text-slate-400">© 2024 GigFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const jobs = [
+            {
+                id: 1,
+                title: "Full-Stack Developer for SaaS Platform",
+                description: "Looking for an experienced developer to build a modern SaaS dashboard with React and Node.js. Must have experience with cloud deployments.",
+                budget: 4500,
+                category: "development",
+                status: "Open"
+            },
+            {
+                id: 2,
+                title: "Brand Identity Designer",
+                description: "Need a creative designer to develop complete brand identity including logo, color palette, and brand guidelines for a tech startup.",
+                budget: 2000,
+                category: "design",
+                status: "Open"
+            },
+            {
+                id: 3,
+                title: "Technical Content Writer",
+                description: "Seeking a writer with technical background to create documentation and blog posts about cloud computing and DevOps practices.",
+                budget: 800,
+                category: "writing",
+                status: "Open"
+            },
+            {
+                id: 4,
+                title: "Social Media Marketing Manager",
+                description: "Looking for a marketing expert to manage social media presence across multiple platforms and develop content strategy.",
+                budget: 1500,
+                category: "marketing",
+                status: "Open"
+            },
+            {
+                id: 5,
+                title: "Mobile App UI/UX Designer",
+                description: "Need a talented designer to create intuitive mobile app interfaces for iOS and Android fitness application.",
+                budget: 3000,
+                category: "design",
+                status: "Open"
+            },
+            {
+                id: 6,
+                title: "WordPress Developer",
+                description: "Seeking a WordPress expert to customize theme, optimize performance, and implement custom functionality for e-commerce site.",
+                budget: 1200,
+                category: "development",
+                status: "Open"
+            },
+            {
+                id: 7,
+                title: "SEO Specialist",
+                description: "Looking for SEO expert to audit website, develop keyword strategy, and implement on-page and off-page optimization techniques.",
+                budget: 900,
+                category: "marketing",
+                status: "Open"
+            },
+            {
+                id: 8,
+                title: "Copywriter for Landing Pages",
+                description: "Need persuasive copy for multiple landing pages focused on B2B SaaS product. Must understand conversion optimization.",
+                budget: 600,
+                category: "writing",
+                status: "Open"
+            },
+            {
+                id: 9,
+                title: "React Native Developer",
+                description: "Building a cross-platform mobile app for food delivery service. Experience with maps integration and payment gateways required.",
+                budget: 6000,
+                category: "development",
+                status: "Open"
+            },
+            {
+                id: 10,
+                title: "Product Illustration Artist",
+                description: "Creating custom illustrations for product marketing materials and website. Modern, minimalist style preferred.",
+                budget: 1800,
+                category: "design",
+                status: "Open"
+            },
+            {
+                id: 11,
+                title: "Email Marketing Specialist",
+                description: "Develop and execute email marketing campaigns including automation sequences, A/B testing, and performance analytics.",
+                budget: 1100,
+                category: "marketing",
+                status: "Open"
+            },
+            {
+                id: 12,
+                title: "API Integration Developer",
+                description: "Need a backend developer to integrate multiple third-party APIs including payment processors and shipping providers.",
+                budget: 2500,
+                category: "development",
+                status: "Open"
+            }
+        ];
+
+        function renderJobs(filteredJobs) {
+            const grid = document.getElementById('jobGrid');
+            const count = document.getElementById('jobCount');
+            
+            count.textContent = `${filteredJobs.length} job${filteredJobs.length !== 1 ? 's' : ''} found`;
+            
+            if (filteredJobs.length === 0) {
+                grid.innerHTML = `
+                    <div class="bg-white rounded-xl border border-slate-200 p-12 text-center">
+                        <span class="iconify text-slate-300 mx-auto mb-4" data-icon="lucide:search-x" data-width="48" data-height="48"></span>
+                        <h3 class="text-base font-medium text-slate-900 mb-2">No jobs found</h3>
+                        <p class="text-sm text-slate-500">Try adjusting your search or filters</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filteredJobs.map(job => `
+                <div class="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-lg hover:shadow-slate-200/50 hover:border-slate-300 transition-all duration-200 group">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-base font-medium text-slate-900 group-hover:text-slate-700 transition-colors line-clamp-1">${job.title}</h3>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 flex-shrink-0 ml-3">
+                            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1.5"></span>
+                            ${job.status}
+                        </span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed">${job.description}</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                        <div class="flex items-center">
+                            <span class="iconify text-slate-400 mr-1.5" data-icon="lucide:wallet" data-width="16" data-height="16"></span>
+                            <span class="text-base font-semibold text-slate-900">$${job.budget.toLocaleString()}</span>
+                            <span class="text-xs text-slate-500 ml-1">budget</span>
+                        </div>
+                        <button class="inline-flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 group/btn transition-colors">
+                            View Details
+                            <span class="iconify ml-1 group-hover/btn:translate-x-0.5 transition-transform" data-icon="lucide:arrow-right" data-width="16" data-height="16"></span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterJobs() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const budget = document.getElementById('budgetFilter').value;
+            
+            let filtered = jobs.filter(job => {
+                const matchesSearch = job.title.toLowerCase().includes(searchTerm) || 
+                                     job.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = !category || job.category === category;
+                
+                let matchesBudget = true;
+                if (budget) {
+                    if (budget === '0-500') matchesBudget = job.budget <= 500;
+                    else if (budget === '500-1000') matchesBudget = job.budget > 500 && job.budget <= 1000;
+                    else if (budget === '1000-5000') matchesBudget = job.budget > 1000 && job.budget <= 5000;
+                    else if (budget === '5000+') matchesBudget = job.budget > 5000;
+                }
+                
+                return matchesSearch && matchesCategory && matchesBudget;
+            });
+            
+            renderJobs(filtered);
+        }
+
+        function searchTag(tag) {
+            document.getElementById('searchInput').value = tag;
+            filterJobs();
+        }
+
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('budgetFilter').value = '';
+            renderJobs(jobs);
+        }
+
+        // Initial render
+        renderJobs(jobs);
+    </script>
+
+</body></html>

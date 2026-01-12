@@ -1,0 +1,203 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Lancr</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+</head>
+
+<body class="min-h-screen bg-zinc-50 flex items-center justify-center px-4 py-8 sm:py-12"
+    style="font-family: 'Inter', sans-serif;">
+
+    <div class="w-full max-w-md">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="#" class="inline-flex items-center gap-2">
+                <div class="w-9 h-9 bg-zinc-900 rounded-lg flex items-center justify-center">
+                    <span class="text-white text-base font-semibold tracking-tight">L</span>
+                </div>
+                <span class="text-xl font-semibold text-zinc-900 tracking-tight">Lancr</span>
+            </a>
+        </div>
+
+        <!-- Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-zinc-200 p-8 sm:p-10">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-2xl font-semibold text-zinc-900 tracking-tight mb-2">Create your account</h1>
+                <p class="text-sm text-zinc-500">Start your freelance journey today</p>
+            </div>
+
+            <!-- Form -->
+            <form id="signupForm" class="space-y-5">
+                <!-- Full Name -->
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-zinc-700 mb-1.5">Full Name</label>
+                    <div class="relative">
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name"
+                            class="w-full px-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-lg text-sm text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-1 focus:border-transparent"
+                            required="">
+                        <span id="nameError" class="hidden text-xs text-red-500 mt-1"></span>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-zinc-700 mb-1.5">Email</label>
+                    <div class="relative">
+                        <input type="email" id="email" name="email" placeholder="you@example.com"
+                            class="w-full px-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-lg text-sm text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-1 focus:border-transparent"
+                            required="">
+                        <span id="emailError" class="hidden text-xs text-red-500 mt-1"></span>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-zinc-700 mb-1.5">Password</label>
+                    <div class="relative">
+                        <input type="password" id="password" name="password" placeholder="Create a strong password"
+                            class="w-full px-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-lg text-sm text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-1 focus:border-transparent pr-11"
+                            required="">
+                        <button type="button" id="togglePassword"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 transition-colors">
+                            <span class="iconify" data-icon="lucide:eye" data-width="18" data-height="18"
+                                style="stroke-width: 1.5;"></span>
+                        </button>
+                        <span id="passwordError" class="hidden text-xs text-red-500 mt-1"></span>
+                    </div>
+                    <p class="text-xs text-zinc-400 mt-1.5">Must be at least 8 characters</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="w-full bg-zinc-900 hover:bg-zinc-800 text-white text-sm font-medium py-2.5 px-4 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2 mt-2">
+                    Sign Up
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="flex items-center my-6">
+                <div class="flex-1 h-px bg-zinc-200"></div>
+                <span class="px-4 text-xs text-zinc-400">or continue with</span>
+                <div class="flex-1 h-px bg-zinc-200"></div>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="grid grid-cols-2 gap-3">
+                <button
+                    class="flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-zinc-200 rounded-lg text-sm font-medium text-zinc-700 hover:bg-zinc-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-1">
+                    <span class="iconify" data-icon="lucide:chrome" data-width="18" data-height="18"
+                        style="stroke-width: 1.5;"></span>
+                    Google
+                </button>
+                <button
+                    class="flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-zinc-200 rounded-lg text-sm font-medium text-zinc-700 hover:bg-zinc-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-1">
+                    <span class="iconify" data-icon="lucide:github" data-width="18" data-height="18"
+                        style="stroke-width: 1.5;"></span>
+                    GitHub
+                </button>
+            </div>
+        </div>
+
+        <!-- Login Link -->
+        <p class="text-center text-sm text-zinc-500 mt-6">
+            Already have an account?
+            <a href="#" class="text-zinc-900 font-medium hover:underline">Log in</a>
+        </p>
+
+        <!-- Terms -->
+        <p class="text-center text-xs text-zinc-400 mt-4 max-w-xs mx-auto">
+            By signing up, you agree to our
+            <a href="#" class="text-zinc-500 hover:text-zinc-700 underline">Terms of Service</a>
+            and
+            <a href="#" class="text-zinc-500 hover:text-zinc-700 underline">Privacy Policy</a>
+        </p>
+    </div>
+
+    <script>
+        // Password toggle
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            const icon = this.querySelector('.iconify');
+            icon.setAttribute('data-icon', type === 'password' ? 'lucide:eye' : 'lucide:eye-off');
+        });
+
+        // Form validation
+        const form = document.getElementById('signupForm');
+        const fullName = document.getElementById('fullName');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        function showError(input, errorElement, message) {
+            input.classList.add('border-red-500', 'focus:ring-red-500');
+            input.classList.remove('border-zinc-200', 'focus:ring-zinc-900');
+            const errorSpan = document.getElementById(errorElement);
+            errorSpan.textContent = message;
+            errorSpan.classList.remove('hidden');
+        }
+
+        function clearError(input, errorElement) {
+            input.classList.remove('border-red-500', 'focus:ring-red-500');
+            input.classList.add('border-zinc-200', 'focus:ring-zinc-900');
+            const errorSpan = document.getElementById(errorElement);
+            errorSpan.classList.add('hidden');
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Validate name
+            if (fullName.value.trim().length < 2) {
+                showError(fullName, 'nameError', 'Please enter your full name');
+                isValid = false;
+            } else {
+                clearError(fullName, 'nameError');
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                showError(email, 'emailError', 'Please enter a valid email address');
+                isValid = false;
+            } else {
+                clearError(email, 'emailError');
+            }
+
+            // Validate password
+            if (password.value.length < 8) {
+                showError(password, 'passwordError', 'Password must be at least 8 characters');
+                isValid = false;
+            } else {
+                clearError(password, 'passwordError');
+            }
+
+            if (isValid) {
+                alert('Account created successfully! Welcome to Lancr.');
+            }
+        });
+
+        // Clear errors on input
+        [fullName, email, password].forEach(input => {
+            input.addEventListener('input', function () {
+                const errorId = this.id + 'Error';
+                if (this.id === 'fullName') clearError(this, 'nameError');
+                else clearError(this, errorId);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lancr</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+</head>
+
+<body
+    class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center px-4 py-8 sm:py-12"
+    style="font-family: 'Inter', sans-serif;">
+
+    <div class="w-full max-w-sm">
+        <!-- Logo -->
+        <div class="text-center mb-10">
+            <a href="#" class="inline-flex items-center gap-2.5">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/25">
+                    <span class="text-white text-lg font-semibold tracking-tighter">L</span>
+                </div>
+                <span class="text-2xl font-semibold text-slate-900 tracking-tight">Lancr</span>
+            </a>
+        </div>
+
+        <!-- Card -->
+        <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 p-8">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-2xl font-semibold text-slate-900 tracking-tight mb-2">Welcome back</h1>
+                <p class="text-sm text-slate-500">Sign in to your account to continue</p>
+            </div>
+
+            <!-- Form -->
+            <form id="loginForm" class="space-y-5">
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email address</label>
+                    <div class="relative">
+                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                            <span class="iconify" data-icon="lucide:mail" data-width="18" data-height="18"
+                                style="stroke-width: 1.5;"></span>
+                        </div>
+                        <input type="email" id="email" name="email" placeholder="you@example.com"
+                            class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
+                            required="">
+                    </div>
+                    <span id="emailError" class="hidden text-xs text-red-500 mt-1.5 ml-1"></span>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
+                        <a href="#"
+                            class="text-xs font-medium text-indigo-600 hover:text-indigo-700 transition-colors">Forgot
+                            password?</a>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                            <span class="iconify" data-icon="lucide:lock" data-width="18" data-height="18"
+                                style="stroke-width: 1.5;"></span>
+                        </div>
+                        <input type="password" id="password" name="password" placeholder="Enter your password"
+                            class="w-full pl-11 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
+                            required="">
+                        <button type="button" id="togglePassword"
+                            class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors">
+                            <span class="iconify" data-icon="lucide:eye" data-width="18" data-height="18"
+                                style="stroke-width: 1.5;"></span>
+                        </button>
+                    </div>
+                    <span id="passwordError" class="hidden text-xs text-red-500 mt-1.5 ml-1"></span>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="flex items-center gap-3">
+                    <button type="button" id="rememberToggle"
+                        class="relative w-10 h-6 bg-slate-200 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:ring-offset-2"
+                        role="switch" aria-checked="false">
+                        <span id="toggleDot"
+                            class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-transform duration-200"></span>
+                    </button>
+                    <label for="rememberToggle" class="text-sm text-slate-600 cursor-pointer">Remember me</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white text-sm font-medium py-3 px-4 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transform hover:-translate-y-0.5 active:translate-y-0">
+                    Sign in
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="flex items-center my-6">
+                <div class="flex-1 h-px bg-slate-200"></div>
+                <span class="px-4 text-xs text-slate-400 font-medium">OR</span>
+                <div class="flex-1 h-px bg-slate-200"></div>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="space-y-3">
+                <button
+                    class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:ring-offset-1">
+                    <span class="iconify" data-icon="lucide:chrome" data-width="18" data-height="18"
+                        style="stroke-width: 1.5;"></span>
+                    Continue with Google
+                </button>
+                <button
+                    class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:ring-offset-1">
+                    <span class="iconify" data-icon="lucide:github" data-width="18" data-height="18"
+                        style="stroke-width: 1.5;"></span>
+                    Continue with GitHub
+                </button>
+            </div>
+        </div>
+
+        <!-- Sign Up Link -->
+        <p class="text-center text-sm text-slate-500 mt-8">
+            Don't have an account?
+            <a href="#" class="text-indigo-600 font-medium hover:text-indigo-700 transition-colors">Create one</a>
+        </p>
+
+        <!-- Footer -->
+        <div class="flex items-center justify-center gap-4 mt-6">
+            <a href="#" class="text-xs text-slate-400 hover:text-slate-600 transition-colors">Privacy</a>
+            <span class="text-slate-300">·</span>
+            <a href="#" class="text-xs text-slate-400 hover:text-slate-600 transition-colors">Terms</a>
+            <span class="text-slate-300">·</span>
+            <a href="#" class="text-xs text-slate-400 hover:text-slate-600 transition-colors">Help</a>
+        </div>
+    </div>
+
+    <script>
+        // Password toggle
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            const icon = this.querySelector('.iconify');
+            icon.setAttribute('data-icon', type === 'password' ? 'lucide:eye' : 'lucide:eye-off');
+        });
+
+        // Remember me toggle
+        const rememberToggle = document.getElementById('rememberToggle');
+        const toggleDot = document.getElementById('toggleDot');
+        let isRemembered = false;
+
+        rememberToggle.addEventListener('click', function () {
+            isRemembered = !isRemembered;
+            this.setAttribute('aria-checked', isRemembered);
+
+            if (isRemembered) {
+                this.classList.remove('bg-slate-200');
+                this.classList.add('bg-indigo-600');
+                toggleDot.classList.add('translate-x-4');
+            } else {
+                this.classList.add('bg-slate-200');
+                this.classList.remove('bg-indigo-600');
+                toggleDot.classList.remove('translate-x-4');
+            }
+        });
+
+        // Form validation
+        const form = document.getElementById('loginForm');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        function showError(input, errorElement, message) {
+            input.classList.add('border-red-400', 'focus:ring-red-500/20', 'focus:border-red-500');
+            input.classList.remove('border-slate-200', 'focus:ring-indigo-500/20', 'focus:border-indigo-500');
+            const errorSpan = document.getElementById(errorElement);
+            errorSpan.textContent = message;
+            errorSpan.classList.remove('hidden');
+        }
+
+        function clearError(input, errorElement) {
+            input.classList.remove('border-red-400', 'focus:ring-red-500/20', 'focus:border-red-500');
+            input.classList.add('border-slate-200', 'focus:ring-indigo-500/20', 'focus:border-indigo-500');
+            const errorSpan = document.getElementById(errorElement);
+            errorSpan.classList.add('hidden');
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                showError(email, 'emailError', 'Please enter a valid email address');
+                isValid = false;
+            } else {
+                clearError(email, 'emailError');
+            }
+
+            // Validate password
+            if (password.value.length < 1) {
+                showError(password, 'passwordError', 'Please enter your password');
+                isValid = false;
+            } else {
+                clearError(password, 'passwordError');
+            }
+
+            if (isValid) {
+                // Show loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.innerHTML = '<span class="iconify animate-spin" data-icon="lucide:loader-2" data-width="18" data-height="18"></span>';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    alert('Login successful! Welcome back to Lancr.');
+                }, 1500);
+            }
+        });
+
+        // Clear errors on input
+        email.addEventListener('input', () => clearError(email, 'emailError'));
+        password.addEventListener('input', () => clearError(password, 'passwordError'));
+    </script>
+
+</body>
+
+</html>

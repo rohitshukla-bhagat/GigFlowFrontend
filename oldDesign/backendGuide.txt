@@ -1,0 +1,311 @@
+GIGFLOW – BACKEND DEVELOPMENT GUIDE
+==================================
+
+This document describes the complete backend architecture for the GigFlow project.
+Frontend is already implemented using React + Vite.
+
+--------------------------------------------------
+1. TECH STACK
+--------------------------------------------------
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- HttpOnly Cookies
+- dotenv
+- bcryptjs
+- cors
+
+--------------------------------------------------
+2. FOLDER STRUCTURE (Backend)
+--------------------------------------------------
+
+server/
+│
+├── config/
+│   └── db.js
+│
+├── controllers/
+│   ├── authController.js
+│   ├── gigController.js
+│   └── bidController.js
+│
+├── models/
+│   ├── User.js
+│   ├── Gig.js
+│   └── Bid.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── gigRoutes.js
+│   └── bidRoutes.js
+│
+├── middleware/
+│   ├── authMiddleware.js
+│   └── errorMiddleware.js
+│
+├── utils/
+│   └── generateToken.js
+│
+├── .env
+├── .env.example
+├── server.js
+└── package.json
+
+--------------------------------------------------
+3. DATABASE CONNECTION (MongoDB)
+--------------------------------------------------
+
+File: config/db.js
+
+- Use mongoose to connect MongoDB
+- Connection string will come from .env
+
+Example:
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/gigflow
+
+--------------------------------------------------
+4. DATABASE MODELS (SCHEMAS)
+--------------------------------------------------
+
+4.1 USER MODEL (models/User.js)
+
+Fields:
+- name: String (required)
+- email: String (required, unique, lowercase)
+- password: String (required, hashed using bcrypt)
+- role: String (enum: "client", "freelancer")
+- createdAt: Date (default: Date.now)
+
+Notes:
+- Role is selected during signup
+- Role is used ONLY for UI routing (dashboard redirection)
+- Backend must NOT restrict actions based on role
+- Any user can:
+  - Post a job (act as Client)
+  - Place a bid (act as Freelancer)
+- Password must be hashed before saving
+- Email must be unique
+
+Security:
+- Password is never returned in API responses
+- JWT authentication used with HttpOnly cookies
+
+--------------------------------------------------
+
+4.2 GIG MODEL (models/Gig.js)
+
+Fields:
+- title: String (required)
+- description: String (required)
+- budget: Number (required)
+- ownerId: ObjectId (ref User)
+- status: String (enum: "open", "assigned")
+- createdAt: Date
+
+Logic:
+- status = "open" when created
+- status = "assigned" when freelancer is hired
+
+--------------------------------------------------
+
+4.3 BID MODEL (models/Bid.js)
+
+Fields:
+- gigId: ObjectId (ref Gig)
+- freelancerId: ObjectId (ref User)
+- message: String
+- price: Number
+- status: String (enum: "pending", "hired", "rejected")
+- createdAt: Date
+
+Logic:
+- status = "pending" initially
+- only one bid can be "hired" per gig
+
+--------------------------------------------------
+5. AUTHENTICATION FLOW
+--------------------------------------------------
+
+5.1 Register User
+Endpoint: POST /api/auth/register
+
+Flow:
+- Receive name, email, password
+- Check if user already exists
+- Hash password
+- Save user to database
+- Generate JWT
+- Send JWT as HttpOnly cookie
+
+--------------------------------------------------
+
+5.2 Login User
+Endpoint: POST /api/auth/login
+
+Flow:
+- Receive email and password
+- Verify credentials
+- Generate JWT
+- Send JWT in HttpOnly cookie
+
+--------------------------------------------------
+
+5.3 Auth Middleware
+File: middleware/authMiddleware.js
+
+Logic:
+- Read token from cookie
+- Verify JWT
+- Attach user to req.user
+- Protect private routes
+
+--------------------------------------------------
+6. GIG APIs (JOB APIs)
+--------------------------------------------------
+
+6.1 Get All Open Gigs
+Endpoint: GET /api/gigs
+
+Query:
+- search by title
+
+Logic:
+- Fetch gigs where status = "open"
+- Used by Home page & JobGrid
+
+--------------------------------------------------
+
+6.2 Create New Gig
+Endpoint: POST /api/gigs
+
+Protected Route (auth required)
+
+Flow:
+- Read title, description, budget
+- ownerId = req.user._id
+- status = open
+- Save gig
+
+Used by:
+- PostJob.jsx
+
+--------------------------------------------------
+
+6.3 Get Single Gig
+Endpoint: GET /api/gigs/:id
+
+Flow:
+- Fetch gig by ID
+- Used by JobDetails.jsx & FreelancerJobDetails.jsx
+
+--------------------------------------------------
+7. BID APIs
+--------------------------------------------------
+
+7.1 Submit Bid
+Endpoint: POST /api/bids
+
+Protected Route
+
+Flow:
+- Receive gigId, message, price
+- freelancerId = req.user._id
+- status = pending
+- Save bid
+
+Used by:
+- FreelancerJobDetails.jsx (Bid Form)
+
+--------------------------------------------------
+
+7.2 Get Bids for a Gig (Client Only)
+Endpoint: GET /api/bids/:gigId
+
+Protected Route
+
+Logic:
+- Fetch all bids for a gig
+- Only owner of the gig can access
+
+Used by:
+- Client JobDetails page
+
+--------------------------------------------------
+8. HIRING LOGIC (MOST IMPORTANT)
+--------------------------------------------------
+
+Endpoint: PATCH /api/bids/:bidId/hire
+
+Protected Route
+
+Atomic Logic:
+1. Find bid by ID
+2. Check gig status is "open"
+3. Update selected bid status = "hired"
+4. Update gig status = "assigned"
+5. Update all other bids of same gig = "rejected"
+
+Important:
+- This endpoint should run in a MongoDB transaction
+- Prevent race condition
+
+--------------------------------------------------
+9. FRONTEND ↔ BACKEND MAPPING
+--------------------------------------------------
+
+Frontend File → API Used
+
+Home / JobGrid.jsx
+→ GET /api/gigs
+
+PostJob.jsx
+→ POST /api/gigs
+
+JobDetails.jsx (Client)
+→ GET /api/gigs/:id
+→ GET /api/bids/:gigId
+→ PATCH /api/bids/:bidId/hire
+
+FreelancerJobDetails.jsx
+→ GET /api/gigs/:id
+→ POST /api/bids
+
+FreelancerDashboard.jsx
+→ GET /api/bids/my-bids (optional)
+
+--------------------------------------------------
+10. ENV FILE
+--------------------------------------------------
+
+.env.example
+
+PORT=5000
+MONGO_URI=
+JWT_SECRET=
+NODE_ENV=development
+
+--------------------------------------------------
+11. SERVER ENTRY POINT
+--------------------------------------------------
+
+server.js
+
+- Setup express app
+- Connect database
+- Setup middleware
+- Setup routes
+- Start server
+
+--------------------------------------------------
+12. BONUS (OPTIONAL)
+--------------------------------------------------
+
+- Socket.io for real-time hire notification
+- Show notification when freelancer is hired
+- Secure cookies with sameSite and httpOnly
+
+--------------------------------------------------
+END OF BACKEND GUIDE
+--------------------------------------------------
