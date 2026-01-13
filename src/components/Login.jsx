@@ -47,7 +47,7 @@ const Login = ({ onLogin }) => {
             setIsLoading(true);
             try {
                 const { default: api } = await import('../api/axios');
-                const response = await api.post('/auth/login', {
+                const response = await api.post('/api/auth/login', {
                     email,
                     password
                 });
@@ -55,7 +55,10 @@ const Login = ({ onLogin }) => {
                 setIsLoading(false);
                 if (onLogin) onLogin(response.data);
             } catch (err) {
-                console.error('Login error:', err);
+                console.error(
+                    'Login error:',
+                    err.response?.data || err.message || err
+                );
                 setIsLoading(false);
                 setErrors({
                     api: err.response?.data?.message || 'Invalid email or password'

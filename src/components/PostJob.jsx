@@ -35,7 +35,7 @@ const PostJob = ({ onLogout }) => {
 
         try {
             const { default: api } = await import('../api/axios');
-            await api.post('/gigs', {
+            await api.post('/api/gigs', {
                 title: formData.jobTitle,
                 description: formData.jobDescription,
                 budget: Number(formData.budget)

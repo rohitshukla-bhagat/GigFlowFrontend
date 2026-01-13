@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000/api', // Backend URL
+    baseURL: import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000', // Backend URL
     withCredentials: true, // Send cookies with requests
     headers: {
         'Content-Type': 'application/json',

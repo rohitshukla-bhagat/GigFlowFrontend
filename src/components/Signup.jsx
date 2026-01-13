@@ -54,7 +54,7 @@ const Signup = ({ onLogin }) => {
                 // Dynamically import api to ensure we use the configured instance
                 const { default: api } = await import('../api/axios');
 
-                const response = await api.post('/auth/register', {
+                const response = await api.post('/api/auth/register', {
                     name: formData.fullName,
                     email: formData.email,
                     password: formData.password,

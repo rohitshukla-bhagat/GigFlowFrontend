@@ -29,8 +29,8 @@ const ClientDashboard = ({ onLogout }) => {
             try {
                 const { default: api } = await import('../api/axios');
                 const [jobsResponse, statsResponse] = await Promise.all([
-                    api.get('/gigs/my-gigs'),
-                    api.get('/gigs/my-stats')
+                    api.get('/api/gigs/my-gigs'),
+                    api.get('/api/gigs/my-stats')
                 ]);
 
                 setMyJobs(jobsResponse.data);

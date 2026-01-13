@@ -12,7 +12,7 @@ const FreelancerDashboard = ({ onLogout }) => {
         const fetchMyBids = async () => {
             try {
                 const { default: api } = await import('../api/axios');
-                const response = await api.get('/bids/my-bids');
+                const response = await api.get('/api/bids/my-bids');
 
                 // Transform API data to match component structure
                 const transformedBids = response.data.map(bid => ({

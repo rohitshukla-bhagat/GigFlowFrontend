@@ -36,9 +36,9 @@ const JobDetails = ({ onLogout }) => {
             try {
                 const { default: api } = await import('../api/axios');
                 // Parallel fetch
-                const [gigRes, bidsRes] = await Promise.all([
-                    api.get(`/gigs/${id}`),
-                    api.get(`/bids/${id}`)
+                const [gigRes, bidsRes] = await Promise.all([   
+                    api.get(`/api/gigs/${id}`),
+                    api.get(`/api/bids/${id}`)
                 ]);
 
                 setGig(gigRes.data);

@@ -21,25 +21,15 @@ const FreelancerJobDetails = ({ user }) => {
     React.useEffect(() => {
         const fetchJob = async () => {
             try {
-                // Using axios (assumed imported as api from '../api/axios')
-                // For now, we'll try to fetch. Since the DB might be empty, 
-                // we might need to handle 404 or empty data gracefully, 
-                // OR fallback to mock data if connection fails for demo purposes.
-                // However, the Goal is to "connect perfectly".
-
-                // IMPORT API LOCALLY TO AVOID TOP-LEVEL IMPORT ISSUES IF FILE MOVED
-                // In real implementation, import at top: import api from '../api/axios';
                 const { default: api } = await import('../api/axios');
 
-                const response = await api.get(`/gigs/${id}`);
+                const response = await api.get(`/api/gigs/${id}`);
                 setJobData(response.data);
                 setLoading(false);
             } catch (err) {
                 console.error("Failed to fetch job:", err);
                 setError("Failed to load job details. The server might be down or the job doesn't exist.");
                 setLoading(false);
-                // Fallback to mock data for demonstration if needed, 
-                // but user wants to CHECK connection. So showing error is better proof.
             }
         };
 
