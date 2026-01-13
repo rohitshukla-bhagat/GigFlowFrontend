@@ -90,7 +90,7 @@ const FreelancerJobDetails = ({ user }) => {
 
         try {
             const { default: api } = await import('../api/axios');
-            await api.post('/bids', {
+            await api.post('/api/bids', {
                 gigId: id,
                 message: formData.proposal,
                 price: Number(formData.bidPrice)
