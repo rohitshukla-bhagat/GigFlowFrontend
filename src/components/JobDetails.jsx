@@ -56,13 +56,13 @@ const JobDetails = ({ onLogout }) => {
         if (selectedBidId) {
             try {
                 const { default: api } = await import('../api/axios');
-                await api.patch(`/bids/${selectedBidId}/hire`);
+                await api.patch(`/api/bids/${selectedBidId}/hire`);
 
                 // Refresh data or update local state
                 // Refresh simpler for now
                 const [gigRes, bidsRes] = await Promise.all([
-                    api.get(`/gigs/${id}`),
-                    api.get(`/bids/${id}`)
+                    api.get(`/api/gigs/${id}`),
+                    api.get(`/api/bids/${id}`)
                 ]);
                 setGig(gigRes.data);
                 setBids(bidsRes.data);
