@@ -48,7 +48,7 @@ Start the development server:
 npm run dev
 ```
 
-The application will typically run on [http://localhost:5173](http://localhost:5173).
+The application will typically run on [https://gigflowbackend.onrender.com](https://gigflowbackend.onrender.com).
 
 ### Building for Production
 
