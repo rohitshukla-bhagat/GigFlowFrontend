@@ -48,7 +48,7 @@ const Home = ({ isLoggedIn, user }) => {
     const fetchJobs = async () => {
       try {
         const { default: api } = await import('./api/axios');
-        const response = await api.get('/gigs'); // Assuming GET /api/gigs returns open gigs
+        const response = await api.get('/api/gigs'); // Assuming GET /api/gigs returns open gigs
         if (Array.isArray(response.data)) {
           setJobs(response.data);
         } else {
@@ -164,7 +164,7 @@ function AppContent() {
   const handleLogout = async () => {
     try {
       const { default: api } = await import('./api/axios');
-      await api.post('/auth/logout');
+      await api.post('/api/auth/logout');
     } catch (error) {
       console.error('Logout error:', error);
     }
