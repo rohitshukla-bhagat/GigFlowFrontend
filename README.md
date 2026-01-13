@@ -48,7 +48,7 @@ Start the development server:
 npm run dev
 ```
 
-The application will typically run on [https://gigflowbackend.onrender.com](https://gigflowbackend.onrender.com).
+The application will typically run on [https://gigflowflreelancing.netlify.app/](https://gigflowflreelancing.netlify.app/).
 
 ### Building for Production
 
