@@ -19,6 +19,7 @@ import {
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import './ClientDashboard.css'; // Shared Sidebar styles
 import './JobDetails.css';
+import './PostJob.css';
 
 const JobDetails = ({ onLogout }) => {
     const { id } = useParams();
@@ -28,15 +29,21 @@ const JobDetails = ({ onLogout }) => {
     const [bids, setBids] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showHireModal, setShowHireModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const [selectedBidId, setSelectedBidId] = useState(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [editFormData, setEditFormData] = useState({
+        title: '',
+        description: '',
+        budget: ''
+    });
 
     React.useEffect(() => {
         const fetchData = async () => {
             try {
                 const { default: api } = await import('../api/axios');
                 // Parallel fetch
-                const [gigRes, bidsRes] = await Promise.all([   
+                const [gigRes, bidsRes] = await Promise.all([
                     api.get(`/api/gigs/${id}`),
                     api.get(`/api/bids/${id}`)
                 ]);
@@ -83,6 +90,49 @@ const JobDetails = ({ onLogout }) => {
     const handleHireClick = (bidId) => {
         setSelectedBidId(bidId);
         setShowHireModal(true);
+    };
+
+    const handleEditClick = () => {
+        setEditFormData({
+            title: gig.title,
+            description: gig.description,
+            budget: gig.budget
+        });
+        setShowEditModal(true);
+    };
+
+    const handleEditChange = (e) => {
+        const { name, value } = e.target;
+        setEditFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleEditSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const { default: api } = await import('../api/axios');
+            const res = await api.put(`/api/gigs/${id}`, editFormData);
+            setGig(res.data);
+            setShowEditModal(false);
+        } catch (error) {
+            console.error("Error updating job:", error);
+            alert("Failed to update job");
+        }
+    };
+
+    const handleDelete = async () => {
+        if (window.confirm("Are you sure you want to delete this job? This will also delete all associated bids. This action cannot be undone.")) {
+            try {
+                const { default: api } = await import('../api/axios');
+                await api.delete(`/api/gigs/${id}`);
+                navigate('/dashboard');
+            } catch (error) {
+                console.error("Error deleting job:", error);
+                alert("Failed to delete job");
+            }
+        }
     };
 
     // Old confirmHire removed in place of async version
@@ -187,11 +237,11 @@ const JobDetails = ({ onLogout }) => {
 
                         {/* Actions */}
                         <div className="job-actions">
-                            <button className="btn-secondary">
+                            <button className="btn-secondary" onClick={handleEditClick}>
                                 <Edit2 size={16} strokeWidth={1.5} />
                                 Edit Job
                             </button>
-                            <button className="btn-secondary btn-danger">
+                            <button className="btn-secondary btn-danger" onClick={handleDelete}>
                                 <Trash2 size={16} strokeWidth={1.5} />
                                 Delete
                             </button>
@@ -287,6 +337,80 @@ const JobDetails = ({ onLogout }) => {
                             Confirm Hire
                         </button>
                     </div>
+                </div>
+            </div>
+
+            {/* Edit Job Modal */}
+            <div className={`modal-overlay ${showEditModal ? 'active' : ''}`}>
+                <div className="modal-content" style={{ maxWidth: '42rem' }}>
+                    <div className="modal-icon-bg bg-blue-100 text-blue-600">
+                        <Edit2 size={28} strokeWidth={1.5} />
+                    </div>
+                    <div className="text-center mb-6">
+                        <h2 className="modal-title">Edit Job Details</h2>
+                        <p className="text-sm text-slate-500">Update your job posting information</p>
+                    </div>
+
+                    <form onSubmit={handleEditSubmit} className="post-job-form">
+                        {/* Job Title */}
+                        <div className="form-group">
+                            <label htmlFor="edit-title" className="form-label">Job Title</label>
+                            <input
+                                type="text"
+                                id="edit-title"
+                                name="title"
+                                value={editFormData.title}
+                                onChange={handleEditChange}
+                                className="form-input"
+                                required
+                            />
+                        </div>
+
+                        {/* Description */}
+                        <div className="form-group">
+                            <label htmlFor="edit-desc" className="form-label">Description</label>
+                            <textarea
+                                id="edit-desc"
+                                name="description"
+                                value={editFormData.description}
+                                onChange={handleEditChange}
+                                rows="6"
+                                className="form-textarea"
+                                required
+                            ></textarea>
+                        </div>
+
+                        {/* Budget */}
+                        <div className="form-group">
+                            <label htmlFor="edit-budget" className="form-label">Budget</label>
+                            <div className="budget-input-wrapper">
+                                <div className="budget-prefix">
+                                    <span className="currency-text">$</span>
+                                </div>
+                                <input
+                                    type="number"
+                                    id="edit-budget"
+                                    name="budget"
+                                    value={editFormData.budget}
+                                    onChange={handleEditChange}
+                                    className="form-input input-with-currency"
+                                    required
+                                />
+                                <div className="budget-suffix">
+                                    <span className="currency-text">USD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="modal-actions" style={{ marginTop: '1.5rem' }}>
+                            <button type="button" onClick={() => setShowEditModal(false)} className="btn-draft" style={{ flex: 1 }}>
+                                Cancel
+                            </button>
+                            <button type="submit" className="btn-submit-job" style={{ flex: 1 }}>
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
